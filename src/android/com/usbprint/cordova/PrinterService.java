@@ -290,7 +290,7 @@ public class PrinterService extends CordovaPlugin {
             Printer p = new Printer(this.usbManager, dev, printer_name, callbackContext);
             this.printers.put(printer_name, p);
             PendingIntent pi = PendingIntent.getBroadcast(this.applicationContext, 0, new Intent(ACTION_USB_PERMISSION),
-                    0);
+                     PendingIntent.FLAG_IMMUTABLE);
             this.applicationContext.registerReceiver(this.mPermissionReceiver, new IntentFilter(ACTION_USB_PERMISSION));
             this.usbManager.requestPermission(dev, pi);
         } else {
